@@ -22,7 +22,7 @@ class SlotMachine {
   subCash(number){
     if(number>this.money)
     {
-      alert('It is impossible to withdraw such amount of money!');
+      alert('В автоматі немає такої суми!');
     }else {
       return this.money -= number;
     }
@@ -65,13 +65,13 @@ class SlotMachine {
   }
 }
 class Casino  {
-  constructor (numberSlotMachine,cash){
-    this.numberSlotMachine = numberSlotMachine;
-    this.cash = cash;
+  constructor (_numberSlotMachine,_cash){
+    this.numberSlotMachine = _numberSlotMachine;
+    this.cash = _cash;
     this.casino = [];
     let cashInSlot =(this.cash-(this.cash % this.numberSlotMachine))/this.numberSlotMachine ;
     this.cash = this.cash % this.numberSlotMachine;
-    for(let j =0 ; j< numberSlotMachine ; j++) {
+    for(let j =0 ; j< this.numberSlotMachine ; j++) {
       this.casino[j] = new SlotMachine(cashInSlot);
     }
     this.casino[0].addCash(this.cash);
@@ -80,7 +80,7 @@ class Casino  {
   }
   getCash (){ return this.cash;}
   getnumberSlotMachine(){return this.numberSlotMachine;}
-  setNewSlotMachine (){
+  createSlotMachine (){
     let maxCashInSlotMachine =this.casino[0].getCash();
     let numberSlotMachinWhithMaxCash=0;
     for (let i=1 ;i<this.casino.length ; i++){
@@ -101,7 +101,7 @@ class Casino  {
     return SumAllCash;
   }
   deleteSlotMachine(numberSlotMachine){
-    numberSlotMachine--;
+      numberSlotMachine--;
     if (numberSlotMachine<this.casino.length && numberSlotMachine >= 0) {
       let cashDeletSlotMachine = this.casino[numberSlotMachine].getCash();
 
@@ -119,13 +119,13 @@ class Casino  {
       this.casino[0].addCash(cashDeletSlotMachine);
 
     } else {
-      alert (numberSlotMachine +1 +' SlotMachine not found!');
+      alert (numberSlotMachine +1 +' Автомат  не знайдено!');
     }
 
   }
   takeMoney (numberMoney) {
     if (numberMoney<this.getSumAllCash()&& numberMoney > 0) {
-      console.log('you have taken money from the casino:',numberMoney ,'$');
+      console.log('Ви забрали з казино ',numberMoney ,'$');
       let exit=true;
       while (exit) {
         let maxCashInSlotMachine =this.casino[0].getCash();
@@ -151,14 +151,52 @@ class Casino  {
       }
     }
     else {
-      console.log('Insufficient funds in the casino');
+      console.log('Недостатньо коштів в казино!');
     }
   }
 }
-var goga = new Casino(10,725);
-console.log(goga);
+
+var goga = new Casino(5,7259);
+function statusCasino(){
+console.log("Казино має ",goga.getnumberSlotMachine(),' ігрових автоматів.' );
+console.log("Загальна сума грошей в казино становить:",goga.getSumAllCash(), '$');
+for(var i = 0 ;i<goga.getnumberSlotMachine();i++)
+{
+  console.log('Ігровий автомат №',i+1,'містить грошей:',  goga.casino[i].getCash(), "$");
+}
+}
+statusCasino();
+console.log("Добавимо новий автомат.");
+goga.createSlotMachine();
+statusCasino();
+console.log("Видалимо автомат №3 новий автомат.");
+goga.deleteSlotMachine(3);
+statusCasino();
+console.log("Спробуэмо видалити автомат під  №8 новий автомат.");
+goga.deleteSlotMachine(8);
+statusCasino();
+console.log("Заберем з казино 2000 $");
+goga.takeMoney(2000);
+statusCasino();
+console.log("Сробуэмо забрати з казино 1 000 000 $");
+goga.takeMoney(1000000);
+console.log("Заберем з автомата №1 300 $");
+goga.casino[0].subCash(300);
+statusCasino();
+console.log("Заберем з автомата №1 3 000 $");
+goga.casino[0].subCash(3000);
+statusCasino();
+
+console.log("Добавимо в автомата №2 5 000 $");
+goga.casino[1].addCash(5000);
+statusCasino();
+console.log("Зіграємо на автомата №2 зі ставкою 400 $");
+goga.casino[1].play(400);
+statusCasino();
+
+
 // console.log(goga.getnumberSlotMachine());
 // console.log(goga.getSumAllCash());
-goga.takeMoney(726);
-goga.casino[0].play(5);
-console.log(goga);
+//goga.takeMoney(10);
+//goga.casino[0].play(5);
+console.log(goga );
