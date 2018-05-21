@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>People Management</title>
+    <link rel="stylesheet" href="style/peopleManagement.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+</head>
+<body> 
+        <main class="container">
+                <form class="input-fo
+                rm">
+                  <input type="text" id="name" class="form-control" placeholder="Name">
+                  <select name="male" id="sex" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <input type="date" id="date" class="form-control" value="1980-01-01">
+                  <input type="text" id="address" class="form-control" placeholder="Address">
+                  <input type="tel" id="phone" class="form-control" placeholder="380931234567" maxlength="12">
+                  <input type="email" id="email" class="form-control" placeholder="email@gmail.com">
+          
+                  <div class="super-user-checkbox">
+                    <input type="checkbox" id="super-user" name="SuperUser" value="SuperUser">
+                    <label for="super-user">Super User</label>
+                  </div>
+                  <button type="button" id="save"  class="btn btn-primary"  onclick="saveUser()">Save</button>
+                </form>
+                <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Sex</th>
+                            <th scope="col">Birth date</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Super User</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+               
+    <script src="js/peopleManagement.js"></script>
+</body>
+</html>

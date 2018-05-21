@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+    <header>Market</header>
+    <div   class="market">
+        <form class="search">
+            <input id="input-serch" class="input-serch"  type="text">
+            <button type="button" class="search-button" onclick="Item.serchItem()">
+                <img src="./imags/search.png" alt="search">
+            </button>
+        </form>
+        <div  id="department" class="departments"></div>
+        <div id="market" class="items" >
+        </div>
+        <div id="basket"   class="visibil-of"> 
+            <table class="table table-bordered table-hover ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Weigh</th>
+                        <th scope="col">Сost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody> 
+            </table>   
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+
+
+</body>
+</html>
