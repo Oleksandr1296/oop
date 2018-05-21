@@ -1,5 +1,5 @@
 # oop
-1 task "Market"
+1. task "Market"
     https://oleksandr1296.github.io/oop/
 2 task "Casino"
      https://oleksandr1296.github.io/oop/casino.html
